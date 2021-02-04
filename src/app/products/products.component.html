@@ -1,41 +1,21 @@
-<ng-template #content let-modal>
-  <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Add To Cart</h4>
-    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
-    <form [formGroup]="addItemToCartForm" (ngSubmit)="onSubmit()">
-      <div class="form-group">
-          <label for="quantity">Quantity</label>
-          <input type="quantity" class="form-control" id="quantity" placeholder="Enter quantity">
-        </div>
-    </form>
-  </div>
-  <div class="modal-footer">
-    <button type="submit" class="btn btn-outline-dark">Save</button>
-  </div>
-</ng-template>
-
 <div>
-    <label>Products</label>
-
     <table class="table table-striped">
         <thead>
         <tr>
           <th scope="col">#</th>
+          <th scope="col">Id</th>
           <th scope="col">Product Name</th>
           <th scope="col">Product Description</th>
           <th scope="col">Add To Cart</th>
         </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let item of products.products; index as i">
+          <tr *ngFor="let product of products.products; index as i">
             <td>{{ i + 1 }}</td>
-            <td>{{item.name}}</td>
-            <td>{{item.description}}</td>
-            <td><button type="button" class="btn btn-primary" (click)="open(content)">Add To Cart</button></td>
+            <td>{{product.id}}</td>
+            <td>{{product.name}}</td>
+            <td>{{product.description}}</td>
+            <td><button type="button" class="btn btn-primary" (click)="updateQuantity(product)">Add To Cart</button></td>
           </tr>
         </tbody>
     </table>

@@ -1,19 +1,27 @@
 <div>
-    <label>Cart id : {{shoppingcart.id}}</label>
-
     <table class="table table-striped">
         <thead>
         <tr>
           <th scope="col">#</th>
+          <th scope="col">Id</th>
           <th scope="col">Product Name</th>
           <th scope="col">Quantity</th>
+          <th scope="col">Update Quantity</th>
+          <th scope="col">Remove</th>
         </tr>
         </thead>
         <tbody>
           <tr *ngFor="let item of shoppingcart.items; index as i">
             <td>{{ i + 1 }}</td>
+            <td>{{item.product.id}}</td>
             <td>{{item.product.name}}</td>
             <td>{{item.quantity}}</td>
+            <td>
+              <button type="button" class="btn btn-primary" (click)="updateQuantity(item.product)">Update Quantity</button>
+            </td>
+            <td>
+              <button type="button" class="btn btn-danger" (click)="removeFromCart(item.product)">Remove</button>
+            </td>
           </tr>
         </tbody>
     </table>
